@@ -5,7 +5,7 @@
       <i class="bi bi-clock"></i> Monday - Saturday, 8AM to 10PM
     </div>
     <div class="d-flex align-items-center">
-      <i class="bi bi-phone"></i> Call us now +1 5589 55488 55
+      <i class="bi bi-phone"></i> Call us now +966 54 423 9000
     </div>
   </div>
 </div>
@@ -114,7 +114,7 @@
     <div class="container" data-aos="fade-up">
 
       <div class="row">
-        <div *ngFor="let x of sections?.featuredServEn?.specs[lan]; let i = index"
+        <div *ngFor="let x of sections?.featuredServ?.specs[lan]; let i = index"
           class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
           <div class="icon-box" data-aos="fade-up" [attr.data-aos-delay]="(i+1)*100">
             <div class="icon"><i class="{{x.Icon}}"></i></div>
@@ -158,7 +158,7 @@
     </div>
   </section><!-- End Featured Services Section -->
 
-  <!-- ======= Cta Section ======= -->
+  <!-- ======= Fast Flight Section ======= -->
   <section id="cta" class="cta">
     <div class="container" data-aos="zoom-in">
 
@@ -197,7 +197,7 @@
     </div>
   </section><!-- End About Us Section -->
 
-  <!-- ======= Counts Section ======= -->
+  <!-- ======= Statistics Section ======= -->
 
 
   <section id="counts" class="counts">
@@ -245,7 +245,7 @@
   </section>
   <!-- End Services Section -->
 
-  <!-- ======= Appointment Section ======= -->
+  <!-- ======= booking Section ======= -->
   <section id="appointment" class="appointment section-bg">
     <div class="container" data-aos="fade-up">
 
@@ -343,8 +343,8 @@
     <div class="container" data-aos="fade-up">
 
       <div class="section-title">
-        <h2>{{sections?.testimonialsSection?.Title_localized[lan.toLowerCase()]}}</h2>
-        <p>{{sections?.testimonialsSection?.Text_localized[lan.toLowerCase()]}}</p>
+        <h2>{{sections?.testimonials?.Title_localized[lan.toLowerCase()]}}</h2>
+        <p>{{sections?.testimonials?.Text_localized[lan.toLowerCase()]}}</p>
       </div>
 
       <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
@@ -436,13 +436,12 @@
 
   <!-- Gallery Section -->
 
-  <!-- ======= Portfolio Section ======= -->
   <section id="portfolio" class="portfolio">
     <div class="container">
 
       <div class="section-title">
-        <h2>Portfolio</h2>
-        <p>Magnam dolores commodi suscipit onsequatur ex aliquid fuga eum quidem</p>
+        <h2>{{sections?.gallery?.Title_localized[lan.toLowerCase()]}}</h2>
+        <p>{{sections?.gallery?.Text_localized[lan.toLowerCase()]}}</p>
       </div>
 
       <div class="row">
@@ -462,7 +461,6 @@
           <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
           <div class="portfolio-info">
             <h4>App 1</h4>
-            <p>App</p>
             <a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery"
               class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
           </div>
@@ -887,13 +885,9 @@
 
   <div class="container">
     <div class="copyright">
-      &copy; Copyright <strong><span>Medicio</span></strong>. All Rights Reserved
+      &copy; Copyright <strong><span>TakeOff</span></strong>. All Rights Reserved
     </div>
     <div class="credits">
-      <!-- All the links in the footer should remain intact. -->
-      <!-- You can delete the links only if you purchased the pro version. -->
-      <!-- Licensing information: https://bootstrapmade.com/license/ -->
-      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/medicio-free-bootstrap-theme/ -->
       Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
     </div>
   </div>
