@@ -313,6 +313,18 @@ setTimeout(() => {
     });
 
 
+    /**
+ * return trip
+ */
+
+    $('input[name="ticket-type"]').change(function () {
+      if ($(this).val() === 'round-trip') {
+        $('#return-date-group').show();
+      } else {
+        $('#return-date-group').hide();
+      }
+    });
+
 
     /**
      * Skills animation
