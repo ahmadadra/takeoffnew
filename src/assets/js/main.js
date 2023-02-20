@@ -292,8 +292,21 @@ setTimeout(() => {
          * for change the bottum in the navbar 
          */
 
-    const enLink = document.getElementById('en-link');
-    const arLink = document.getElementById('ar-link');
+    const langSwitcher = document.getElementById('lang-switcher');
+    let currentLang = 'ar';
+
+    langSwitcher.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (currentLang === 'ar') {
+        langSwitcher.textContent = 'En';
+        currentLang = 'en';
+        // call a function to switch the language to English
+      } else {
+        langSwitcher.textContent = 'Ar';
+        currentLang = 'ar';
+        // call a function to switch the language to Arabic
+      }
+    });
 
     // Set the current language to English.
     let currentLanguage = 'en';

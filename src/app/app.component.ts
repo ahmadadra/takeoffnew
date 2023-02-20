@@ -9,6 +9,7 @@ import { Component, OnInit, SimpleChanges } from '@angular/core';
 export class AppComponent implements OnInit {
   sections: any = [];
   testimonials: any = [];
+  questions: any = [];
 
   localizations: any = [];
   // read language from cookie if exist, otherwise, its En
@@ -60,44 +61,29 @@ export class AppComponent implements OnInit {
       .then(data => {
         console.log('testimonials:', data);
         this.testimonials = data.results;
-
-        // Make specs Arabic and english
-        for (let index = 0; index < Object.keys(this.sections).length; index++) {
-          let key = Object.keys(this.sections)[index];
-          let specs: any = {
-            En: [],
-            Ar: []
-          };
-          for (let i = 0; i < this.sections[key]?.specs?.length; i++) {
-            if (this.sections[key].specs[i].Name.slice(-3) == '_en') {
-              this.sections[key].specs[i].Name = this.sections[key].specs[i].Name.slice(0, -3);
-              specs.En.push(this.sections[key].specs[i]);
-            }
-            else {
-              specs.Ar.push(this.sections[key].specs[i]);
-            }
-          }
-          this.sections[key].specs = specs;
-        }
-
-        // only in sections (array to object + localstorage)
-        let obj = Object.assign(
-          {},
-          ...this.sections.map((x: any) => ({ [x.Section]: x }))
-        );
-        this.sections = obj;
-
-
-        console.log("finaaal", this.sections);
-        localStorage.setItem("sections", JSON.stringify(obj));
-        // End
       })
-
-
       .catch((error) => {
         console.error('Error:', error);
       });
 
+
+    //Get for QnA
+
+    this.api('/QnA/', 'get', {
+      fields: "Question,Answer",
+      limit: -1,
+      locale: "En,Ar",
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log('questions:', data);
+        this.questions = data.results;
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+
+    //get for sections
 
     this.api('/Sections/', 'get', {
       fields: "Title,Section,Text,specs,Brief",
@@ -107,7 +93,7 @@ export class AppComponent implements OnInit {
     })
       .then(response => response.json())
       .then(data => {
-        console.log('Success:', data);
+        console.log('sections:', data);
         this.sections = data.results;
 
         // Make specs Arabic and english
@@ -137,7 +123,7 @@ export class AppComponent implements OnInit {
         this.sections = obj;
 
 
-        console.log("finaaal", this.sections);
+        console.log("localstorage", this.sections);
         localStorage.setItem("sections", JSON.stringify(obj));
         // End
       })
@@ -202,6 +188,9 @@ export class AppComponent implements OnInit {
     this.setCookie("language", this.lan, null);
     console.log(this.lan)
   }
+
+
+
 
   // functions related to cookies
   setCookie(name: any, value: any, days: any) {
