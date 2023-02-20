@@ -2,7 +2,7 @@
 <div id="topbar" class="d-flex align-items-center fixed-top">
   <div class="container d-flex align-items-center justify-content-center justify-content-md-between">
     <div class="align-items-center d-none d-md-flex">
-      <i class="bi bi-clock"></i> Monday - Saturday, 8AM to 10PM
+      <i class="bi bi-clock"></i> Monday - Sunday, 8AM to 11PM
     </div>
     <div class="d-flex align-items-center">
       <i class="bi bi-phone"></i> Call us now +966 54 423 9000
@@ -29,15 +29,12 @@
         <li><a class="nav-link scrollto" href="#clients">Our Clients</a></li>
         <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
         <li><a href="#" id="lang-switcher" (click)="changeLanguage()">Ar</a></li>
-
       </ul>
       <i class="bi bi-list mobile-nav-toggle"></i>
     </nav><!-- .navbar -->
 
     <a href="#appointment" class="appointment-btn scrollto"><span class="d-none d-md-inline">Book Your Dream </span>
       Vacation</a>
-
-
 
   </div>
 </header><!-- End Header -->
@@ -51,7 +48,7 @@
     <div class="carousel-inner" role="listbox">
 
       <!-- Slide 1 -->
-      <div class="carousel-item active" style="background-image: url(assets/img/slide/slide-1.jpg)">
+      <div class="carousel-item active" style="background-image: url(assets/img/slide/1.png)">
         <div class="container">
           <h2>Welcome to <span>Medicio</span></h2>
           <p>Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam.
@@ -126,7 +123,6 @@
         </p>
         <a class="cta-btn scrollto" href="#appointment">Book Now and Let Your Adventure Begin!</a>
       </div>
-      <button (click)="changeLanguage()">hii</button>
 
     </div>
   </section>
@@ -369,7 +365,6 @@
             <p>Web</p>
             <a href="assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery"
               class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
-            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
           </div>
         </div>
 
@@ -380,7 +375,6 @@
             <p>App</p>
             <a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery"
               class="portfolio-lightbox preview-link" title="App 2"><i class="bx bx-plus"></i></a>
-            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
           </div>
         </div>
 
@@ -391,7 +385,6 @@
             <p>Card</p>
             <a href="assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery"
               class="portfolio-lightbox preview-link" title="Card 2"><i class="bx bx-plus"></i></a>
-            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
           </div>
         </div>
 
@@ -402,7 +395,6 @@
             <p>Web</p>
             <a href="assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery"
               class="portfolio-lightbox preview-link" title="Web 2"><i class="bx bx-plus"></i></a>
-            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
           </div>
         </div>
 
@@ -413,7 +405,6 @@
             <p>App</p>
             <a href="assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery"
               class="portfolio-lightbox preview-link" title="App 3"><i class="bx bx-plus"></i></a>
-            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
           </div>
         </div>
 
@@ -424,7 +415,6 @@
             <p>Card</p>
             <a href="assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery"
               class="portfolio-lightbox preview-link" title="Card 1"><i class="bx bx-plus"></i></a>
-            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
           </div>
         </div>
 
@@ -435,7 +425,6 @@
             <p>Card</p>
             <a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery"
               class="portfolio-lightbox preview-link" title="Card 3"><i class="bx bx-plus"></i></a>
-            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
           </div>
         </div>
 
@@ -446,7 +435,6 @@
             <p>Web</p>
             <a href="assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery"
               class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
-            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
           </div>
         </div>
 
@@ -471,67 +459,66 @@
 
         <li>
           <div data-bs-toggle="collapse" class="collapsed question" href="#faq1">
-            {{questions[0].Question_localized[lan.toLowerCase()]}} <i class="bi bi-chevron-down icon-show"></i><i
-              class="bi bi-chevron-up icon-close"></i>
+            <p [innerHTML]="questions[0].Question_localized[lan.toLowerCase()] | safeHtml"></p><i
+              class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i>
           </div>
           <div id="faq1" class="collapse" data-bs-parent=".faq-list">
-            <p>
-              {{questions[0].Answer_localized[lan.toLowerCase()]}}
+            <p [innerHTML]="questions[0].Answer_localized[lan.toLowerCase()] | safeHtml">
             </p>
           </div>
         </li>
 
         <li>
           <div data-bs-toggle="collapse" href="#faq2" class="collapsed question">
-            {{questions[1].Question_localized[lan.toLowerCase()]}} <i class="bi bi-chevron-down icon-show"></i><i
-              class="bi bi-chevron-up icon-close"></i></div>
+            <p [innerHTML]="questions[1].Question_localized[lan.toLowerCase()] | safeHtml"></p> <i
+              class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i>
+          </div>
           <div id="faq2" class="collapse" data-bs-parent=".faq-list">
-            <p>
-              {{questions[1].Answer_localized[lan.toLowerCase()]}}
+            <p [innerHTML]="questions[1].Answer_localized[lan.toLowerCase()] | safeHtml">
             </p>
           </div>
         </li>
 
         <li>
           <div data-bs-toggle="collapse" href="#faq3" class="collapsed question">
-            {{questions[2].Question_localized[lan.toLowerCase()]}} <i class="bi bi-chevron-down icon-show"></i><i
-              class="bi bi-chevron-up icon-close"></i></div>
+            <p [innerHTML]="questions[2].Question_localized[lan.toLowerCase()] | safeHtml"></p> <i
+              class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i>
+          </div>
           <div id="faq3" class="collapse" data-bs-parent=".faq-list">
-            <p>
-              {{questions[2].Answer_localized[lan.toLowerCase()]}}
+            <p [innerHTML]="questions[2].Answer_localized[lan.toLowerCase()] | safeHtml">
             </p>
           </div>
         </li>
 
         <li>
           <div data-bs-toggle="collapse" href="#faq4" class="collapsed question">
-            {{questions[3].Question_localized[lan.toLowerCase()]}} <i class="bi bi-chevron-down icon-show"></i><i
-              class="bi bi-chevron-up icon-close"></i></div>
+            <p [innerHTML]="questions[3].Question_localized[lan.toLowerCase()] | safeHtml"></p> <i
+              class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i>
+          </div>
           <div id="faq4" class="collapse" data-bs-parent=".faq-list">
-            <p>
-              {{questions[3].Answer_localized[lan.toLowerCase()]}}
+            <p [innerHTML]="questions[3].Answer_localized[lan.toLowerCase()] | safeHtml">
             </p>
           </div>
         </li>
 
         <li>
           <div data-bs-toggle="collapse" href="#faq5" class="collapsed question">
-            {{questions[4].Question_localized[lan.toLowerCase()]}} <i class="bi bi-chevron-down icon-show"></i><i
-              class="bi bi-chevron-up icon-close"></i></div>
+            <p [innerHTML]="questions[4].Question_localized[lan.toLowerCase()] | safeHtml"></p> <i
+              class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i>
+          </div>
           <div id="faq5" class="collapse" data-bs-parent=".faq-list">
-            <p>
-              {{questions[4].Answer_localized[lan.toLowerCase()]}}
+            <p [innerHTML]="questions[4].Answer_localized[lan.toLowerCase()] | safeHtml">
             </p>
           </div>
         </li>
 
         <li>
           <div data-bs-toggle="collapse" href="#faq6" class="collapsed question">
-            {{questions[5].Question_localized[lan.toLowerCase()]}} <i class="bi bi-chevron-down icon-show"></i><i
-              class="bi bi-chevron-up icon-close"></i></div>
+            <p [innerHTML]="questions[5].Question_localized[lan.toLowerCase()] | safeHtml"></p> <i
+              class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i>
+          </div>
           <div id="faq6" class="collapse" data-bs-parent=".faq-list">
-            <p>
-              {{questions[5].Answer_localized[lan.toLowerCase()]}}
+            <p [innerHTML]="questions[5].Answer_localized[lan.toLowerCase()] | safeHtml">
             </p>
           </div>
         </li>

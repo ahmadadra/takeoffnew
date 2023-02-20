@@ -292,54 +292,54 @@ setTimeout(() => {
          * for change the bottum in the navbar 
          */
 
-    const langSwitcher = document.getElementById('lang-switcher');
-    let currentLang = 'ar';
+    // const langSwitcher = document.getElementById('lang-switcher');
+    // let currentLang = 'ar';
 
-    langSwitcher.addEventListener('click', function (e) {
-      e.preventDefault();
-      if (currentLang === 'ar') {
-        langSwitcher.textContent = 'En';
-        currentLang = 'en';
-        // call a function to switch the language to English
-      } else {
-        langSwitcher.textContent = 'Ar';
-        currentLang = 'ar';
-        // call a function to switch the language to Arabic
-      }
-    });
+    // langSwitcher.addEventListener('click', function (e) {
+    //   e.preventDefault();
+    //   if (currentLang === 'ar') {
+    //     langSwitcher.textContent = 'En';
+    //     currentLang = 'en';
+    // call a function to switch the language to English
+    // } else {
+    //   langSwitcher.textContent = 'Ar';
+    //   currentLang = 'ar';
+    // call a function to switch the language to Arabic
+    //   }
+    // });
 
     // Set the current language to English.
-    let currentLanguage = 'en';
+    // let currentLanguage = 'en';
 
     // Add a click event listener to the English link.
-    enLink.addEventListener('click', function (e) {
-      e.preventDefault();
-      // Only switch language if the user clicked on a different link.
-      if (currentLanguage !== 'en') {
-        currentLanguage = 'en';
-        // Call a function to switch the language on the page.
-        // For example:
-        // switchLanguage('en');
-        // Add the active class to the English link and remove it from the Arabic link.
-        enLink.classList.add('active');
-        arLink.classList.remove('active');
-      }
-    });
+    // enLink.addEventListener('click', function (e) {
+    //   e.preventDefault();
+    // Only switch language if the user clicked on a different link.
+    // if (currentLanguage !== 'en') {
+    //   currentLanguage = 'en';
+    // Call a function to switch the language on the page.
+    // For example:
+    // switchLanguage('en');
+    // Add the active class to the English link and remove it from the Arabic link.
+    //     enLink.classList.add('active');
+    //     arLink.classList.remove('active');
+    //   }
+    // });
 
     // Add a click event listener to the Arabic link.
-    arLink.addEventListener('click', function (e) {
-      e.preventDefault();
-      // Only switch language if the user clicked on a different link.
-      if (currentLanguage !== 'ar') {
-        currentLanguage = 'ar';
-        // Call a function to switch the language on the page.
-        // For example:
-        // switchLanguage('ar');
-        // Add the active class to the Arabic link and remove it from the English link.
-        arLink.classList.add('active');
-        enLink.classList.remove('active');
-      }
-    });
+    // arLink.addEventListener('click', function (e) {
+    //   e.preventDefault();
+    // Only switch language if the user clicked on a different link.
+    // if (currentLanguage !== 'ar') {
+    //   currentLanguage = 'ar';
+    // Call a function to switch the language on the page.
+    // For example:
+    // switchLanguage('ar');
+    // Add the active class to the Arabic link and remove it from the English link.
+    //     arLink.classList.add('active');
+    //     enLink.classList.remove('active');
+    //   }
+    // });
 
     /**
      * Initiate portfolio lightbox 
