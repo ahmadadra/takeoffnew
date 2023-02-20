@@ -8,6 +8,8 @@ import { Component, OnInit, SimpleChanges } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   sections: any = [];
+  testimonials: any = [];
+
   localizations: any = [];
   // read language from cookie if exist, otherwise, its En
   lan: any = this.getCookie("language") ? this.getCookie("language") : "En";
@@ -32,7 +34,70 @@ export class AppComponent implements OnInit {
     // Put and delete -> path = /table/objectId
 
 
-    //Get
+    //Get for sections
+
+    // this.api('/Sections/', 'get', {
+    //   fields: "Title,Section,Text,specs,Brief",
+    //   limit: -1,
+    //   locale: "En,Ar",
+    //   media: "images"
+    // })
+    //   .then(response => response.json())
+    //   .then(data => {
+    //     console.log('Success:', data);
+    //     this.sections = data.results;
+
+
+    //Get for testimonials
+
+    this.api('/Testimonials/', 'get', {
+      fields: "Name,positionName,Text",
+      limit: -1,
+      locale: "En,Ar",
+      media: "images"
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log('testimonials:', data);
+        this.testimonials = data.results;
+
+        // Make specs Arabic and english
+        for (let index = 0; index < Object.keys(this.sections).length; index++) {
+          let key = Object.keys(this.sections)[index];
+          let specs: any = {
+            En: [],
+            Ar: []
+          };
+          for (let i = 0; i < this.sections[key]?.specs?.length; i++) {
+            if (this.sections[key].specs[i].Name.slice(-3) == '_en') {
+              this.sections[key].specs[i].Name = this.sections[key].specs[i].Name.slice(0, -3);
+              specs.En.push(this.sections[key].specs[i]);
+            }
+            else {
+              specs.Ar.push(this.sections[key].specs[i]);
+            }
+          }
+          this.sections[key].specs = specs;
+        }
+
+        // only in sections (array to object + localstorage)
+        let obj = Object.assign(
+          {},
+          ...this.sections.map((x: any) => ({ [x.Section]: x }))
+        );
+        this.sections = obj;
+
+
+        console.log("finaaal", this.sections);
+        localStorage.setItem("sections", JSON.stringify(obj));
+        // End
+      })
+
+
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+
 
     this.api('/Sections/', 'get', {
       fields: "Title,Section,Text,specs,Brief",

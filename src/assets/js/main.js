@@ -289,6 +289,46 @@ setTimeout(() => {
     });
 
     /**
+         * for change the bottum in the navbar 
+         */
+
+    const enLink = document.getElementById('en-link');
+    const arLink = document.getElementById('ar-link');
+
+    // Set the current language to English.
+    let currentLanguage = 'en';
+
+    // Add a click event listener to the English link.
+    enLink.addEventListener('click', function (e) {
+      e.preventDefault();
+      // Only switch language if the user clicked on a different link.
+      if (currentLanguage !== 'en') {
+        currentLanguage = 'en';
+        // Call a function to switch the language on the page.
+        // For example:
+        // switchLanguage('en');
+        // Add the active class to the English link and remove it from the Arabic link.
+        enLink.classList.add('active');
+        arLink.classList.remove('active');
+      }
+    });
+
+    // Add a click event listener to the Arabic link.
+    arLink.addEventListener('click', function (e) {
+      e.preventDefault();
+      // Only switch language if the user clicked on a different link.
+      if (currentLanguage !== 'ar') {
+        currentLanguage = 'ar';
+        // Call a function to switch the language on the page.
+        // For example:
+        // switchLanguage('ar');
+        // Add the active class to the Arabic link and remove it from the English link.
+        arLink.classList.add('active');
+        enLink.classList.remove('active');
+      }
+    });
+
+    /**
      * Initiate portfolio lightbox 
      */
     const portfolioLightbox = GLightbox({
@@ -323,6 +363,13 @@ setTimeout(() => {
       } else {
         $('#return-date-group').hide();
       }
+    });
+
+    const travelDateInput = document.getElementById('travel-date');
+    const arrivalDateInput = document.getElementById('arrival-date');
+    travelDateInput.addEventListener('change', (event) => {
+      const travelDateValue = event.target.value;
+      arrivalDateInput.min = travelDateValue;
     });
 
 
