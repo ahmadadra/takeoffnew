@@ -20,20 +20,20 @@
 
     <nav id="navbar" class="navbar order-last order-lg-0">
       <ul>
-        <li><a class="nav-link scrollto " href="#hero">Home</a></li>
-        <li><a class="nav-link scrollto" href="#about">About</a></li>
-        <li><a class="nav-link scrollto" href="#services">Services</a></li>
-        <li><a class="nav-link scrollto" href="#portfolio">Gallery</a></li>
-        <li><a class="nav-link scrollto" href="#faq">Q&A</a></li>
-        <li><a class="nav-link scrollto" href="#testimonials">Testimonials</a></li>
-        <li><a class="nav-link scrollto" href="#clients">Our Clients</a></li>
-        <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-        <li><a href="#" id="lang-switcher" (click)="changeLanguage()">Ar</a></li>
+        <li><a class="nav-link scrollto " href="#hero">{{localizations.home[lan]}}</a></li>
+        <li><a class="nav-link scrollto" href="#about">{{localizations.about[lan]}}</a></li>
+        <li><a class="nav-link scrollto" href="#services">{{localizations.services[lan]}}</a></li>
+        <li><a class="nav-link scrollto" href="#portfolio">{{localizations.gallery[lan]}}</a></li>
+        <li><a class="nav-link scrollto" href="#faq">{{localizations.faq[lan]}}</a></li>
+        <li><a class="nav-link scrollto" href="#testimonials">{{localizations.testimonials[lan]}}</a></li>
+        <li><a class="nav-link scrollto" href="#clients">{{localizations.client[lan]}}</a></li>
+        <li><a class="nav-link scrollto" href="#contact">{{localizations.contact[lan]}}</a></li>
+        <li><a href="#" id="lang-switcher" (click)="changeLanguage()">{{lan == 'Ar' ? 'En' : 'عربي'}}</a></li>
       </ul>
       <i class="bi bi-list mobile-nav-toggle"></i>
     </nav><!-- .navbar -->
 
-    <a href="#appointment" class="appointment-btn scrollto"><span class="d-none d-md-inline">Book Your Dream </span>
+    <a href="#booking" class="appointment-btn scrollto"><span class="d-none d-md-inline">Book Your Dream </span>
       Vacation</a>
 
   </div>
@@ -113,7 +113,7 @@
     </div>
   </section><!-- End Featured Services Section -->
 
-  <!-- ======= Fast Flight Section ======= -->
+  <!-- ======= Fast booking Section ======= -->
   <section id="cta" class="cta">
     <div class="container" data-aos="zoom-in">
 
@@ -121,7 +121,8 @@
         <h3>{{sections?.fastFlight?.Title_localized[lan.toLowerCase()]}}</h3>
         <p [innerHTML]="sections?.fastFlight?.Text_localized[lan.toLowerCase()]">
         </p>
-        <a class="cta-btn scrollto" href="#appointment">Book Now and Let Your Adventure Begin!</a>
+        <a class="cta-btn scrollto" href="#booking"
+          style="text-decoration: none;">{{localizations.fastbookingbtn[lan]}}</a>
       </div>
 
     </div>
@@ -199,7 +200,7 @@
   <!-- End Services Section -->
 
   <!-- ======= booking Section ======= -->
-  <section id="appointment" class="appointment section-bg">
+  <section id="booking" class="appointment section-bg">
     <div class="container" data-aos="fade-up">
 
       <div class="section-title">
@@ -285,45 +286,11 @@
           <div class="error-message"></div>
           <div class="sent-message">Your appointment request has been sent successfully. Thank you!</div>
         </div>
-        <div class="text-center"><button type="submit">Make an Appointment</button></div>
+        <div class="text-center"><button type="submit">{{localizations.bookbtn[lan]}}</button></div>
       </form>
     </div>
   </section><!-- End Appointment Section -->
 
-  <!-- ======= Testimonials Section ======= -->
-  <section id="testimonials" class="testimonials">
-    <div class="container" data-aos="fade-up">
-
-      <div class="section-title">
-        <h2>{{sections?.testimonials?.Title_localized[lan.toLowerCase()]}}</h2>
-        <p [innerHTML]="sections?.testimonials?.Text_localized[lan.toLowerCase()] | safeHtml"></p>
-      </div>
-
-      <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide" *ngFor="let x of testimonials">
-            <div class="testimonial-item">
-              <p>
-                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                <span [innerHTML]="x.Text_localized[lan.toLowerCase()] | safeHtml"></span>
-                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-              </p>
-              <img src="{{x.images.testimonials[0].dir}}{{x.images.testimonials[0].image}}" class="testimonial-img"
-                alt="">
-              <h3>{{x.Name_localized[lan.toLowerCase()]}}</h3>
-              <h4>{{x.positionName_localized[lan.toLowerCase()]}}</h4>
-            </div>
-          </div>
-          <!-- End testimonial item -->
-
-        </div>
-        <div class="swiper-pagination"></div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- End Testimonials Section -->
 
   <!-- Gallery Section -->
 
@@ -339,9 +306,9 @@
         <div class="col-lg-12 d-flex justify-content-center">
           <ul id="portfolio-flters">
             <li data-filter="*" class="filter-active">All</li>
-            <li data-filter=".filter-app">App</li>
-            <li data-filter=".filter-card">Card</li>
-            <li data-filter=".filter-web">Web</li>
+            <li data-filter=".filter-app">Bali</li>
+            <li data-filter=".filter-card">Thailand</li>
+            <li data-filter=".filter-web">Turkey</li>
           </ul>
         </div>
       </div>
@@ -528,6 +495,40 @@
     </div>
   </section><!-- End Frequently Asked Questioins Section -->
 
+  <!-- ======= Testimonials Section ======= -->
+  <section id="testimonials" class="testimonials">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-title">
+        <h2>{{sections?.testimonials?.Title_localized[lan.toLowerCase()]}}</h2>
+        <p [innerHTML]="sections?.testimonials?.Text_localized[lan.toLowerCase()] | safeHtml"></p>
+      </div>
+
+      <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" *ngFor="let x of testimonials">
+            <div class="testimonial-item">
+              <p>
+                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                <span [innerHTML]="x.Text_localized[lan.toLowerCase()] | safeHtml"></span>
+                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+              </p>
+              <img src="{{x.images.testimonials[0].dir}}{{x.images.testimonials[0].image}}" class="testimonial-img"
+                alt="">
+              <h3>{{x.Name_localized[lan.toLowerCase()]}}</h3>
+              <h4>{{x.positionName_localized[lan.toLowerCase()]}}</h4>
+            </div>
+          </div>
+          <!-- End testimonial item -->
+
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- End Testimonials Section -->
 
   <!-- ======= Our Clients Section ======= -->
   <section id="clients" class="clients">
@@ -662,7 +663,7 @@
               <div class="error-message"></div>
               <div class="sent-message">Your message has been sent. Thank you!</div>
             </div>
-            <div class="text-center"><button type="submit">Send Message</button></div>
+            <div class="text-center"><button type="submit">{{localizations.sendmsgbtn[lan]}}</button></div>
           </form>
         </div>
 

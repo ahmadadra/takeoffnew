@@ -141,7 +141,7 @@ export class AppComponent implements OnInit {
     })
       .then(response => response.json())
       .then(data => {
-        console.log('Success:', data);
+        // console.log('localizations:', data);
         this.localizations = data.results;
 
         // only in localizations (array to object + localstorage)
@@ -150,7 +150,7 @@ export class AppComponent implements OnInit {
           ...this.localizations.map((x: any) => ({ [x.Key]: x }))
         );
         this.localizations = obj;
-        console.log(this.localizations);
+        console.log('localizations:', this.localizations);
         localStorage.setItem("localizations", JSON.stringify(obj));
         // End
       })
