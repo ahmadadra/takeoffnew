@@ -141,7 +141,7 @@ export class AppComponent implements OnInit {
     })
       .then(response => response.json())
       .then(data => {
-        // console.log('localizations:', data);
+        console.log('localizations:', data);
         this.localizations = data.results;
 
         // only in localizations (array to object + localstorage)

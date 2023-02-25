@@ -14,7 +14,7 @@
 <header id="header" class="fixed-top">
   <div class="container d-flex align-items-center">
 
-    <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt=""></a>
+    <a href="index.html" class="logo me-auto"><img src="assets/img/logo1.png" alt=""></a>
     <!-- Uncomment below if you prefer to use an image logo -->
     <!-- <h1 class="logo me-auto"><a href="index.html">Medicio</a></h1> -->
 
@@ -28,7 +28,7 @@
         <li><a class="nav-link scrollto" href="#testimonials">{{localizations.testimonials[lan]}}</a></li>
         <li><a class="nav-link scrollto" href="#clients">{{localizations.client[lan]}}</a></li>
         <li><a class="nav-link scrollto" href="#contact">{{localizations.contact[lan]}}</a></li>
-        <li><a href="#" id="lang-switcher" (click)="changeLanguage()">{{lan == 'Ar' ? 'En' : 'عربي'}}</a></li>
+        <li><a href="#" id="lang-switcher" (click)="changeLanguage()">{{lan == 'Ar' ? 'En' : 'Ar'}}</a></li>
       </ul>
       <i class="bi bi-list mobile-nav-toggle"></i>
     </nav><!-- .navbar -->
@@ -48,12 +48,14 @@
     <div class="carousel-inner" role="listbox">
 
       <!-- Slide 1 -->
-      <div class="carousel-item active" style="background-image: url(assets/img/slide/1.png)">
+      <div class="carousel-item active" style="background-image: url(assets/img/slide/slide-1.jpg)">
         <div class="container">
-          <h2>Welcome to <span>Medicio</span></h2>
-          <p>Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam.
-            Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti
-            vel.</p>
+          <h2>Discover the Magic of Bali</h2>
+          <p>From the stunning beaches and beautiful temples to the world-renowned surf, Bali is a tropical paradise
+            that has something for everyone. Explore this exotic and exciting destination and create memories that will
+            last a lifetime.
+
+          </p>
           <a href="#about" class="btn-get-started scrollto">Read More</a>
         </div>
       </div>
@@ -61,21 +63,20 @@
       <!-- Slide 2 -->
       <div class="carousel-item" style="background-image: url(assets/img/slide/slide-2.jpg)">
         <div class="container">
-          <h2>Lorem Ipsum Dolor</h2>
-          <p>Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam.
-            Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti
-            vel.</p>
+          <h2>Explore the Best of Turkey</h2>
+          <p>Experience the vibrant culture, ancient ruins, and breathtaking beaches of Turkey. From the bustling
+            streets of Bangkok to the pristine shores of Phuket, Turkey is a destination that will capture your heart
+            and leave you wanting more.</p>
           <a href="#about" class="btn-get-started scrollto">Read More</a>
         </div>
       </div>
 
       <!-- Slide 3 -->
-      <div class="carousel-item" style="background-image: url(assets/img/slide/slide-3.jpg)">
+      <div class="carousel-item" style="background-image: url(assets/img/slide/2.png)">
         <div class="container">
-          <h2>Sequi ea ut et est quaerat</h2>
-          <p>Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam.
-            Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti
-            vel.</p>
+          <h2>Discover Sri Lanka</h2>
+          <p> Immerse yourself in the lush jungles, vibrant cities, and stunning beaches of Sri Lanka. Experience the
+            rich culture and history of this unique destination and create memories that will last a lifetime.</p>
           <a href="#about" class="btn-get-started scrollto">Read More</a>
         </div>
       </div>
@@ -307,8 +308,8 @@
           <ul id="portfolio-flters">
             <li data-filter="*" class="filter-active">All</li>
             <li data-filter=".filter-app">Bali</li>
-            <li data-filter=".filter-card">Thailand</li>
-            <li data-filter=".filter-web">Turkey</li>
+            <li data-filter=".filter-card">Turkey</li>
+            <li data-filter=".filter-web">Thailand</li>
           </ul>
         </div>
       </div>
@@ -318,90 +319,90 @@
         <div class="col-lg-4 col-md-6 portfolio-item filter-app">
           <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
           <div class="portfolio-info">
-            <h4>App 1</h4>
-            <p>App</p>
+            <h4>Bali 1</h4>
+            <p>Bali</p>
             <a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery"
-              class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
+              class="portfolio-lightbox preview-link" title="Bali 1"><i class="bx bx-plus"></i></a>
           </div>
         </div>
 
         <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-          <img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
+          <img src="assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
           <div class="portfolio-info">
-            <h4>Web 3</h4>
-            <p>Web</p>
-            <a href="assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery"
-              class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
+            <h4>Thailand 3</h4>
+            <p>Thailand</p>
+            <a href="assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery"
+              class="portfolio-lightbox preview-link" title="Thailand 3"><i class="bx bx-plus"></i></a>
           </div>
         </div>
 
         <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-          <img src="assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
+          <img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
           <div class="portfolio-info">
-            <h4>App 2</h4>
-            <p>App</p>
-            <a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery"
-              class="portfolio-lightbox preview-link" title="App 2"><i class="bx bx-plus"></i></a>
+            <h4>Bali 2</h4>
+            <p>Bali</p>
+            <a href="assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery"
+              class="portfolio-lightbox preview-link" title="Bali 2"><i class="bx bx-plus"></i></a>
           </div>
         </div>
 
         <div class="col-lg-4 col-md-6 portfolio-item filter-card">
           <img src="assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
           <div class="portfolio-info">
-            <h4>Card 2</h4>
-            <p>Card</p>
+            <h4>Turkey 2</h4>
+            <p>Turkey</p>
             <a href="assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery"
-              class="portfolio-lightbox preview-link" title="Card 2"><i class="bx bx-plus"></i></a>
+              class="portfolio-lightbox preview-link" title="Turkey 2"><i class="bx bx-plus"></i></a>
           </div>
         </div>
 
         <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-          <img src="assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
+          <img src="assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
           <div class="portfolio-info">
-            <h4>Web 2</h4>
-            <p>Web</p>
-            <a href="assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery"
-              class="portfolio-lightbox preview-link" title="Web 2"><i class="bx bx-plus"></i></a>
+            <h4>Thailand 2</h4>
+            <p>Thailand</p>
+            <a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery"
+              class="portfolio-lightbox preview-link" title="Thailand 2"><i class="bx bx-plus"></i></a>
           </div>
         </div>
 
         <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+          <img src="assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4>Bali 3</h4>
+            <p>Bali</p>
+            <a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery"
+              class="portfolio-lightbox preview-link" title="Bali 3"><i class="bx bx-plus"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+          <img src="assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4>Turkey 1</h4>
+            <p>Turkey</p>
+            <a href="assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery"
+              class="portfolio-lightbox preview-link" title="Turkey 1"><i class="bx bx-plus"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
           <img src="assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
           <div class="portfolio-info">
-            <h4>App 3</h4>
-            <p>App</p>
+            <h4>Turkey 3</h4>
+            <p>Turkey</p>
             <a href="assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery"
-              class="portfolio-lightbox preview-link" title="App 3"><i class="bx bx-plus"></i></a>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-          <img src="assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
-          <div class="portfolio-info">
-            <h4>Card 1</h4>
-            <p>Card</p>
-            <a href="assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery"
-              class="portfolio-lightbox preview-link" title="Card 1"><i class="bx bx-plus"></i></a>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-          <img src="assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
-          <div class="portfolio-info">
-            <h4>Card 3</h4>
-            <p>Card</p>
-            <a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery"
-              class="portfolio-lightbox preview-link" title="Card 3"><i class="bx bx-plus"></i></a>
+              class="portfolio-lightbox preview-link" title="Turkey 3"><i class="bx bx-plus"></i></a>
           </div>
         </div>
 
         <div class="col-lg-4 col-md-6 portfolio-item filter-web">
           <img src="assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
           <div class="portfolio-info">
-            <h4>Web 3</h4>
-            <p>Web</p>
+            <h4>Thailand 3</h4>
+            <p>Thailand</p>
             <a href="assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery"
-              class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
+              class="portfolio-lightbox preview-link" title="Thailand 3"><i class="bx bx-plus"></i></a>
           </div>
         </div>
 
