@@ -6,6 +6,7 @@ body {
 a {
   color: #3fbbc0;
   text-decoration: none;
+  /* font-family: ; */
 }
 
 a:hover {
@@ -141,7 +142,7 @@ h6 {
   background: #fff;
   transition: all 0.5s;
   z-index: 997;
-  padding: 20px 0;
+  padding: 10px 0;
   top: 40px;
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
 }
@@ -152,8 +153,14 @@ h6 {
   }
 }
 
+#header.header-initial {
+  opacity: 0.8;
+}
+
+
 #header.header-scrolled {
   top: 0;
+  opacity: 1 !important;
 }
 
 #header .logo {
@@ -1386,6 +1393,125 @@ section {
 }
 
 
+
+
+/*--------------------------------------------------------------
+# offers Section
+--------------------------------------------------------------*/
+
+.events .container-fluid {
+  padding: 0;
+}
+
+.events .event-item {
+  background-size: cover;
+  background-position: center;
+  min-height: 600px;
+  padding: 30px;
+}
+
+@media (max-width: 575px) {
+  .events .event-item {
+    min-height: 500px;
+  }
+}
+
+.events .event-item:before {
+  content: "";
+  background: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  inset: 0;
+}
+
+.events .event-item h3 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  color: #fff;
+  position: relative;
+}
+
+.events .event-item .price {
+  color: #fff;
+  border-bottom: 2px solid #3fbbc0;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.events .event-item .description {
+  margin-bottom: 0;
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+}
+
+@media (min-width: 1200px) {
+  .events .swiper-slide-active+.swiper-slide {
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.5);
+    z-index: 1;
+  }
+}
+
+.events .swiper-pagination {
+  margin-top: 20px;
+  position: relative;
+}
+
+.events .swiper-pagination .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background-color: #d1d1d7;
+  opacity: 1;
+}
+
+.events .swiper-pagination .swiper-pagination-bullet-active {
+  background-color: #3fbbc0;
+}
+
+
+/*--------------------------------------------------------------
+# offers filters
+--------------------------------------------------------------*/
+.events #portfolio-flters,
+.events #event-flters {
+  padding: 0;
+  margin: 0 auto 25px auto;
+  list-style: none;
+  text-align: center;
+  background: white;
+  border-radius: 50px;
+  padding: 2px 15px;
+}
+
+.events #portfolio-flters li,
+.events #event-flters li {
+  cursor: pointer;
+  display: inline-block;
+  padding: 10px 15px 8px 15px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1;
+  text-transform: capitalize;
+  color: #444444;
+  margin-bottom: 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+.events #portfolio-flters li:hover,
+.events #portfolio-flters li.filter-active,
+.events #event-flters li:hover,
+.events #event-flters li.filter-active {
+  color: #85b0be;
+}
+
+.events #portfolio-flters li:last-child,
+.events #event-flters li:last-child {
+  margin-right: 0;
+}
+
+
 /*--------------------------------------------------------------
 # Gallery
 --------------------------------------------------------------*/
@@ -1902,7 +2028,7 @@ section {
 # Footer
 --------------------------------------------------------------*/
 .footer {
-  background: #eeeeee;
+  background: #dfefef;
   padding: 0 0 30px 0;
   color: #555555;
   font-size: 14px;

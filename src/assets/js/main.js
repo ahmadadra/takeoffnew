@@ -196,6 +196,71 @@ setTimeout(() => {
         heroCarouselIndicators.innerHTML += "<li data-bs-target='#heroCarousel' data-bs-slide-to='" + index + "'></li>"
     });
 
+
+
+    /**
+     * Init swiper slider with 3 slides at once in desktop view for offers section
+     */
+    new Swiper('.slides-3', {
+      speed: 600,
+      loop: true,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false
+      },
+      slidesPerView: 'auto',
+      pagination: {
+        el: '.swiper-pagination',
+        type: 'bullets',
+        clickable: true
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      breakpoints: {
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 40
+        },
+
+        1200: {
+          slidesPerView: 3,
+        }
+      }
+    });
+
+    /**
+    * offers isotope and filter
+    */
+    // window.addEventListener('load', () => {
+    //   let portfolioContainer = select('.swiper-wrapper');
+    //   if (portfolioContainer) {
+    //     let portfolioIsotope = new Isotope(portfolioContainer, {
+    //       itemSelector: '.event-item'
+    //     });
+
+    //     let portfolioFilters = select('#event-flters li', true);
+
+    //     on('click', '#event-flters li', function (e) {
+    //       e.preventDefault();
+    //       portfolioFilters.forEach(function (el) {
+    //         el.classList.remove('filter-active');
+    //       });
+    //       this.classList.add('filter-active');
+
+    //       portfolioIsotope.arrange({
+    //         filter: this.getAttribute('data-filter')
+    //       });
+    //       portfolioIsotope.on('arrangeComplete', function () {
+    //         AOS.refresh()
+    //       });
+    //     }, true);
+    //   }
+
+    // });
+
+
     /**
      * Testimonials slider
      */
