@@ -281,6 +281,11 @@ section.portfolio .portfolio-container .fullImage img {
   font-weight: 500;
 }
 
+body.Ar .navbar a,
+body.Ar .navbar a:focus {
+  font-size: 16px !important;
+}
+
 .navbar a i,
 .navbar a:focus i {
   font-size: 12px;

@@ -10,6 +10,9 @@ export class AppComponent implements OnInit {
   sections: any = [];
   testimonials: any = [];
   questions: any = [];
+  allOffers: any = [];
+  offers: any = [];
+  offersCats: any = [];
 
   localizations: any = [];
   // read language from cookie if exist, otherwise, its En
@@ -51,50 +54,78 @@ export class AppComponent implements OnInit {
 
     //Get for testimonials
 
-    this.api('/Testimonials/', 'get', {
-      fields: "Name,positionName,Text",
-      limit: -1,
-      locale: "En,Ar",
-      media: "images"
+    this.api('/batch', 'post', {
+      requests: [
+        {
+          path: "/Testimonials",
+          body: {
+            fields: "Name,positionName,Text",
+            limit: -1,
+            locale: "En,Ar",
+            media: "images"
+          },
+          method: "get",
+        },
+        {
+          path: "/QnA",
+          body: {
+            fields: "Question,Answer",
+            limit: -1,
+            locale: "En,Ar",
+          },
+          method: "get",
+        },
+        {
+          path: "/Sections",
+          body: {
+            fields: "Title,Section,Text,specs,Brief",
+            limit: -1,
+            locale: "En,Ar",
+            media: "images"
+          },
+          method: "get",
+        },
+        {
+          path: "/_Locale",
+          body: {
+            fields: "Key,En,Ar",
+            limit: -1,
+          },
+          method: "get",
+        },
+        {
+          path: "/Offers",
+          body: {
+            fields: "Title,categories,Text,Price",
+            locale: "En,Ar",
+            limit: -1,
+            media: "images"
+          },
+          method: "get",
+        },
+        {
+          path: "/Offers/categories",
+          body: {},
+          method: "get",
+        }
+      ]
     })
       .then(response => response.json())
       .then(data => {
+        console.log('Success:', data);
+
+
         console.log('testimonials:', data);
-        this.testimonials = data.results;
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
+        this.testimonials = data[0].results;
 
 
-    //Get for QnA
-
-    this.api('/QnA/', 'get', {
-      fields: "Question,Answer",
-      limit: -1,
-      locale: "En,Ar",
-    })
-      .then(response => response.json())
-      .then(data => {
         console.log('questions:', data);
-        this.questions = data.results;
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
+        this.questions = data[1].results;
 
-    //get for sections
 
-    this.api('/Sections/', 'get', {
-      fields: "Title,Section,Text,specs,Brief",
-      limit: -1,
-      locale: "En,Ar",
-      media: "images"
-    })
-      .then(response => response.json())
-      .then(data => {
-        console.log('sections:', data);
-        this.sections = data.results;
+
+        console.log('sections:', data[2]);
+        this.sections = data[2].results;
 
         // Make specs Arabic and english
         for (let index = 0; index < Object.keys(this.sections).length; index++) {
@@ -125,34 +156,45 @@ export class AppComponent implements OnInit {
 
         console.log("localstorage", this.sections);
         localStorage.setItem("sections", JSON.stringify(obj));
-        // End
-      })
 
-
-      .catch((error) => {
-        console.error('Error:', error);
-      });
-
-
-    //localizations
-    this.api('/_Locale/', 'get', {
-      fields: "Key,En,Ar",
-      limit: -1,
-    })
-      .then(response => response.json())
-      .then(data => {
-        console.log('localizations:', data);
-        this.localizations = data.results;
+        console.log('localizations:', data[3]);
+        this.localizations = data[3].results;
 
         // only in localizations (array to object + localstorage)
-        let obj = Object.assign(
+        obj = Object.assign(
           {},
           ...this.localizations.map((x: any) => ({ [x.Key]: x }))
         );
         this.localizations = obj;
         console.log('localizations:', this.localizations);
         localStorage.setItem("localizations", JSON.stringify(obj));
+
+
+        this.allOffers = data[4].results;
+        this.offers = data[4].results;
+        console.log('allOffers', this.allOffers)
+
+
+
+        this.offersCats = data[5].results;
+        console.log('offersCats', this.offersCats)
         // End
+
+
+
+
+
+        setTimeout(() => {
+          let offersCats: any = document.querySelectorAll("#event-flters li");
+          for (const o of offersCats) {
+            o.addEventListener('click', function () {
+              for (const o of offersCats) {
+                o.classList.remove('filter-active');
+              }
+              o.classList.add('filter-active');
+            })
+          }
+        }, 500)
       })
       .catch((error) => {
         console.error('Error:', error);
@@ -183,6 +225,8 @@ export class AppComponent implements OnInit {
   changeLanguage() {
     if (this.lan == 'En') this.lan = 'Ar';
     else this.lan = 'En';
+    document.querySelector('body')?.classList.add(this.lan);
+
 
     // when language changes, change the cookie
     this.setCookie("language", this.lan, null);
@@ -190,6 +234,50 @@ export class AppComponent implements OnInit {
   }
 
 
+  changeImages(cat_id: any) {
+    if (cat_id == 'all') this.offers = this.allOffers;
+    else {
+      this.offers = [];
+      for (let i = 0; i < this.allOffers.length; i++) {
+        const element = this.allOffers[i];
+        if (element.categories[0].objectId == cat_id) {
+          this.offers.push(element);
+        }
+      }
+    }
+    let xx = `new Swiper('.slides-3', {
+      speed: 600,
+      loop: false,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: true
+      },
+      slidesPerView: 'auto',
+      pagination: {
+        el: '.swiper-pagination',
+        type: 'bullets',
+        clickable: true
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      breakpoints: {
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 40
+        },
+
+        1200: {
+          slidesPerView: ${this.offers.length < 3 ? this.offers.length : 3},
+        }
+      }
+    });`
+    setTimeout(() => {
+      eval(xx);
+    }, 100);
+    console.log("hiii", this.offers);
+  }
 
 
   // functions related to cookies
