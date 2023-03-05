@@ -188,14 +188,42 @@ setTimeout(() => {
   * Hero carousel indicators
   */
 
-    let heroCarouselIndicators = select("#hero-carousel-indicators")
-    let heroCarouselItems = select('#heroCarousel .carousel-item', true)
+    // let heroCarouselIndicators = select("#hero-carousel-indicators")
+    // let heroCarouselItems = select('#heroCarousel .carousel-item', true)
 
-    heroCarouselItems.forEach((item, index) => {
-      (index === 0) ?
-        heroCarouselIndicators.innerHTML += "<li data-bs-target='#heroCarousel' data-bs-slide-to='" + index + "' class='active'></li>" :
-        heroCarouselIndicators.innerHTML += "<li data-bs-target='#heroCarousel' data-bs-slide-to='" + index + "'></li>"
+    // heroCarouselItems.forEach((item, index) => {
+    //   (index === 0) ?
+    //     heroCarouselIndicators.innerHTML += "<li data-bs-target='#heroCarousel' data-bs-slide-to='" + index + "' class='active'></li>" :
+    //     heroCarouselIndicators.innerHTML += "<li data-bs-target='#heroCarousel' data-bs-slide-to='" + index + "'></li>"
+    // });
+
+
+    let heroCarouselIndicators = document.querySelector("#hero-carousel-indicators");
+    let heroCarouselItems = document.querySelectorAll("#heroCarousel .carousel-item");
+
+    // Add click event listener to each bullet
+    heroCarouselIndicators.addEventListener("click", function (event) {
+      if (event.target.tagName === "LI") {
+        // Remove "active" class from all bullets
+        heroCarouselIndicators.querySelectorAll("li").forEach(function (li) {
+          li.classList.remove("active");
+        });
+        // Add "active" class to the clicked bullet
+        event.target.classList.add("active");
+        // Change the background image of the carousel's container element
+        heroCarouselItems.forEach(function (item, index) {
+          if (index === event.target.dataset.bsSlideTo) {
+            item.style.backgroundImage = "url(path/to/image" + (index + 1) + ".jpg)";
+          } else {
+            item.style.backgroundImage = "";
+          }
+        });
+      }
     });
+
+
+
+
 
 
 

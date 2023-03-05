@@ -23,11 +23,13 @@
         <li><a class="nav-link scrollto " href="#hero">{{localizations.home[lan]}}</a></li>
         <li><a class="nav-link scrollto" href="#about">{{localizations.about[lan]}}</a></li>
         <li><a class="nav-link scrollto" href="#services">{{localizations.services[lan]}}</a></li>
-        <li><a class="nav-link scrollto" href="#portfolio">{{localizations.gallery[lan]}}</a></li>
+        <!-- <li><a class="nav-link scrollto" href="#portfolio">{{localizations.gallery[lan]}}</a></li> -->
+        <li><a class="nav-link scrollto" href="#events">{{localizations.offers[lan]}}</a></li>
         <li><a class="nav-link scrollto" href="#faq">{{localizations.faq[lan]}}</a></li>
         <li><a class="nav-link scrollto" href="#testimonials">{{localizations.testimonials[lan]}}</a></li>
         <li><a class="nav-link scrollto" href="#clients">{{localizations.client[lan]}}</a></li>
         <li><a class="nav-link scrollto" href="#contact">{{localizations.contact[lan]}}</a></li>
+        <li><a class="nav-link scrollto" href="#">{{localizations.login[lan]}}</a></li>
         <li><a href="#" id="lang-switcher" (click)="changeLanguage()">{{lan == 'Ar' ? 'En' : 'Ar'}}</a></li>
       </ul>
       <i class="bi bi-list mobile-nav-toggle"></i>
@@ -43,20 +45,22 @@
 <section id="hero">
   <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
 
-    <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+    <ol class="carousel-indicators" id="hero-carousel-indicators">
+      <li *ngFor="let x of trend; let i = index" [attr.data-bs-slide-to]="i" class='active' style="display: none;"></li>
+    </ol>
 
     <div class="carousel-inner" role="listbox">
 
       <!-- Slide 1 -->
 
-      <div *ngFor="let x of trend" class=" carousel-item active"
+      <div *ngFor="let x of trend;" class="carousel-item active"
         [style]="'background-image: url(\'' + x.images.untitled[0].dir + x.images.untitled[0].image + '\')'">
         <div class="container">
           <h2>{{x.Title_localized[lan.toLowerCase()]}}</h2>
           <p [innerHTML]="x.Text_localized[lan.toLowerCase()]">
 
           </p>
-          <a href=" #about" class="btn-get-started scrollto">Read More</a>
+          <a href="#events" class="btn-get-started scrollto">{{localizations.goToOffers[lan]}}</a>
         </div>
       </div>
 
@@ -278,8 +282,8 @@
     <div class="container-fluid" data-aos="fade-up">
 
       <div class="section-title">
-        <h2>Offers</h2>
-        <p>ectetur inventore sapiente ipsum voluptas eos omnis facere.</p>
+        <h2>{{sections?.offers?.Title_localized[lan.toLowerCase()]}}</h2>
+        <p [innerHTML]="sections?.offers?.Text_localized[lan.toLowerCase()] | safeHtml"></p>
       </div>
 
       <div class="row">
