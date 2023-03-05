@@ -48,36 +48,15 @@
     <div class="carousel-inner" role="listbox">
 
       <!-- Slide 1 -->
-      <div class="carousel-item active" style="background-image: url(assets/img/slide/slide-1.jpg)">
+
+      <div *ngFor="let x of trend" class=" carousel-item active"
+        [style]="'background-image: url(\'' + x.images.untitled[0].dir + x.images.untitled[0].image + '\')'">
         <div class="container">
-          <h2>Discover the Magic of Bali</h2>
-          <p>From the stunning beaches and beautiful temples to the world-renowned surf, Bali is a tropical paradise
-            that has something for everyone. Explore this exotic and exciting destination and create memories that will
-            last a lifetime.
+          <h2>{{x.Title_localized[lan.toLowerCase()]}}</h2>
+          <p [innerHTML]="x.Text_localized[lan.toLowerCase()]">
 
           </p>
-          <a href="#about" class="btn-get-started scrollto">Read More</a>
-        </div>
-      </div>
-
-      <!-- Slide 2 -->
-      <div class="carousel-item" style="background-image: url(assets/img/slide/slide-2.jpg)">
-        <div class="container">
-          <h2>Explore the Best of Turkey</h2>
-          <p>Experience the vibrant culture, ancient ruins, and breathtaking beaches of Turkey. From the bustling
-            streets of Bangkok to the pristine shores of Phuket, Turkey is a destination that will capture your heart
-            and leave you wanting more.</p>
-          <a href="#about" class="btn-get-started scrollto">Read More</a>
-        </div>
-      </div>
-
-      <!-- Slide 3 -->
-      <div class="carousel-item" style="background-image: url(assets/img/slide/2.png)">
-        <div class="container">
-          <h2>Discover Sri Lanka</h2>
-          <p> Immerse yourself in the lush jungles, vibrant cities, and stunning beaches of Sri Lanka. Experience the
-            rich culture and history of this unique destination and create memories that will last a lifetime.</p>
-          <a href="#about" class="btn-get-started scrollto">Read More</a>
+          <a href=" #about" class="btn-get-started scrollto">Read More</a>
         </div>
       </div>
 
@@ -142,7 +121,8 @@
 
       <div class="row">
         <div class="col-lg-6" data-aos="fade-right">
-          <img src="assets/img/about.jpg" class="img-fluid" alt="">
+          <img src="{{sections?.aboutUs.images.untitled[0].dir}}{{sections?.aboutUs.images.untitled[0].image}}"
+            class="img-fluid" alt="">
         </div>
         <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left">
           <p [innerHTML]="sections?.aboutUs?.Text_localized[lan.toLowerCase()] | safeHtml"></p>
@@ -319,7 +299,8 @@
 
           <div *ngFor="let x of offers"
             class="swiper-slide event-item d-flex flex-column justify-content-end filter-{{x.categories[0].objectId}}"
-            style="background-image: url('{{x.images.untitled[0].dir}}{{x.images.untitled[0].image}}')">
+            [style]="'background-image: url(\'' + x.images.untitled[0].dir + x.images.untitled[0].image + '\')'"
+            loading="lazy">
             <h3>{{x.Title_localized[lan.toLowerCase()]}}</h3>
             <div class="price align-self-start">{{x.Price}}</div>
             <p class="description" [innerHTML]="x.Text_localized[lan.toLowerCase()] | safeHtml"></p>
@@ -466,11 +447,11 @@
       <ul class="faq-list">
 
         <li *ngFor="let x of questions; let i = index">
-          <div data-bs-toggle="collapse" class="collapsed question" href="#faq1]">
+          <div data-bs-toggle="collapse" class="collapsed question" [attr.href]=" '#faq' + i ">
             <p [innerHTML]="questions[i].Question_localized[lan.toLowerCase()] | safeHtml"></p><i
               class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i>
           </div>
-          <div id="faq1" class="collapse" data-bs-parent=".faq-list">
+          <div id="faq{{i}}" class="collapse" data-bs-parent=".faq-list">
             <p [innerHTML]="questions[i].Answer_localized[lan.toLowerCase()] | safeHtml">
             </p>
           </div>

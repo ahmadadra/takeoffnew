@@ -1,18 +1,25 @@
-import { Component, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Pipe, PipeTransform, SimpleChanges } from '@angular/core';
+import { DomSanitizer } from "@angular/platform-browser";
 
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+
 })
-export class AppComponent implements OnInit {
+
+export class AppComponent implements OnInit, PipeTransform {
+  constructor(private sanitizer: DomSanitizer) { }
+
   sections: any = [];
   testimonials: any = [];
   questions: any = [];
   allOffers: any = [];
   offers: any = [];
   offersCats: any = [];
+  trend: any = [];
+  offSwiper: any;
 
   localizations: any = [];
   // read language from cookie if exist, otherwise, its En
@@ -107,6 +114,16 @@ export class AppComponent implements OnInit {
           path: "/Offers/categories",
           body: {},
           method: "get",
+        },
+        {
+          path: "/Trend",
+          body: {
+            fields: "Title,Text",
+            locale: "En,Ar",
+            limit: -1,
+            media: "images"
+          },
+          method: "get",
         }
       ]
     })
@@ -174,13 +191,29 @@ export class AppComponent implements OnInit {
         this.offers = data[4].results;
         console.log('allOffers', this.allOffers)
 
+        setTimeout(() => {
+          let s = `new Swiper('.slides-3', {
+            speed: 600,
+            lazy: true, 
+            loop: false,
+            slidesPerView: 3,
+            pagination: {
+              el: '.swiper-pagination',
+              type: 'bullets',
+              clickable: true
+            }
+          });`;
+          this.offSwiper = eval(s);
+        }, 1000);
+
 
 
         this.offersCats = data[5].results;
         console.log('offersCats', this.offersCats)
         // End
 
-
+        console.log('Trend:', data[6]);
+        this.trend = data[6].results;
 
 
 
@@ -223,8 +256,10 @@ export class AppComponent implements OnInit {
   }
 
   changeLanguage() {
+    let oldLan = this.lan;
     if (this.lan == 'En') this.lan = 'Ar';
     else this.lan = 'En';
+    document.querySelector('body')?.classList.remove(oldLan);
     document.querySelector('body')?.classList.add(this.lan);
 
 
@@ -235,18 +270,21 @@ export class AppComponent implements OnInit {
 
 
   changeImages(cat_id: any) {
-    if (cat_id == 'all') this.offers = this.allOffers;
+    this.offSwiper.destroy();
+    let temp = [];
+    if (cat_id == 'all') temp = this.allOffers;
     else {
-      this.offers = [];
+      temp = [];
       for (let i = 0; i < this.allOffers.length; i++) {
         const element = this.allOffers[i];
         if (element.categories[0].objectId == cat_id) {
-          this.offers.push(element);
+          temp.push(element);
         }
       }
     }
     let xx = `new Swiper('.slides-3', {
       speed: 600,
+      lazy: true,
       loop: false,
       autoplay: {
         delay: 5000,
@@ -269,14 +307,29 @@ export class AppComponent implements OnInit {
         },
 
         1200: {
-          slidesPerView: ${this.offers.length < 3 ? this.offers.length : 3},
+          slidesPerView: ${temp.length < 3 ? temp.length : 3},
         }
       }
     });`
+    this.offSwiper = eval(xx);
+    this.offers = temp;
     setTimeout(() => {
-      eval(xx);
-    }, 100);
+      this.offSwiper.destroy();
+      this.offSwiper = eval(xx);
+
+      let slides = document.querySelectorAll('.slides-3 .swiper-slide');
+      for (let i = 0; i < slides.length; i++) {
+        let s: any = slides[i];
+        if (!s.style.backgroundImage) {
+          s.style.backgroundImage = "url('" + this.offers[i].images.untitled[0].dir + this.offers[i].images.untitled[0].image + "')";
+        }
+      }
+    }, 50);
     console.log("hiii", this.offers);
+  }
+
+  transform(url: any) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 
 

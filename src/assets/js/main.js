@@ -185,8 +185,9 @@ setTimeout(() => {
     }
 
     /**
-     * Hero carousel indicators
-     */
+  * Hero carousel indicators
+  */
+
     let heroCarouselIndicators = select("#hero-carousel-indicators")
     let heroCarouselItems = select('#heroCarousel .carousel-item', true)
 
@@ -201,16 +202,16 @@ setTimeout(() => {
     /**
      * Init swiper slider with 3 slides at once in desktop view for offers section
      */
-    new Swiper('.slides-3', {
-      speed: 600,
-      loop: false,
-      slidesPerView: 3,
-      pagination: {
-        el: '.swiper-pagination',
-        type: 'bullets',
-        clickable: true
-      }
-    });
+    // new Swiper('.slides-3', {
+    //   speed: 600,
+    //   loop: false,
+    //   slidesPerView: 3,
+    //   pagination: {
+    //     el: '.swiper-pagination',
+    //     type: 'bullets',
+    //     clickable: true
+    //   }
+    // });
 
     /**
     * offers isotope and filter
