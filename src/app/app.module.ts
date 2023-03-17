@@ -5,17 +5,28 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SafeHtmlPipe } from './safe-html.pipe';
 import { SafePipe } from './safe.pipe';
+import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SignUpComponent } from './sign-up/sign-up.component'
+
 
 @NgModule({
   declarations: [
     AppComponent,
     SafePipe,
     SafeHtmlPipe,
-    SafePipe
+    SafePipe,
+    LoginComponent,
+    HomeComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
