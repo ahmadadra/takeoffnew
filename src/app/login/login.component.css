@@ -20,6 +20,24 @@
     z-index: 1;
 }
 
+.form-control:invalid {
+    border-color: #dc3545;
+}
+
+.form-control:invalid:focus {
+    border-color: #dc3545;
+    box-shadow: none;
+}
+
+.invalid-feedback {
+    display: none;
+    color: #dc3545;
+}
+
+.form-control:invalid~.invalid-feedback {
+    display: block;
+}
+
 
 /* @media (max-width: 991.98px) {
     .cascading-right {

@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DatabaseService } from '../database.service';
-
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css']
 })
+
+
 export class SignUpComponent implements OnInit {
   checkoutForm = this.formBuilder.group({
     fname: '',
@@ -14,10 +15,16 @@ export class SignUpComponent implements OnInit {
     email: '',
     password: '',
     privilege: ''
+
   });
-  constructor(private dbService: DatabaseService, private formBuilder: FormBuilder) { }
+  constructor(private dbService: DatabaseService, private formBuilder: FormBuilder) {
+
+
+  }
 
   ngOnInit(): void {
+
+
   }
 
   signUp() {
@@ -43,3 +50,4 @@ export class SignUpComponent implements OnInit {
       })
   }
 }
+
